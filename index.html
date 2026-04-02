@@ -6,7 +6,7 @@
   <title>Shakti Sports & Fitness - Digital Transformation</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
   <style>
@@ -18,533 +18,604 @@
       --dark-surface: #111827;
       --dark-card: #1a2235;
       --dark-border: rgba(255,255,255,0.08);
+      --text-primary: #f0f0f0;
+      --text-secondary: #94a3b8;
+      --text-muted: #64748b;
       --green: #25D366;
       --green-dark: #128C7E;
       --blue: #3b82f6;
       --purple: #7c3aed;
       --red: #ef4444;
     }
-    .reveal { font-family: 'Inter', system-ui, sans-serif; }
-    .reveal h1, .reveal h2, .reveal h3 { font-family: 'Inter', sans-serif; font-weight: 800; text-transform: none; letter-spacing: -0.02em; }
-    .reveal h1 { font-size: 2.8em; line-height: 1.1; }
-    .reveal h2 { font-size: 2em; line-height: 1.15; margin-bottom: 0.3em; }
-    .reveal h3 { font-size: 1.3em; font-weight: 700; }
-    .reveal p { font-size: 0.95em; line-height: 1.6; color: rgba(255,255,255,0.88); }
-    .reveal section { text-align: left; }
-    .reveal .slides > section { padding: 40px; }
 
-    .accent { color: var(--accent); }
-    .green { color: var(--green); }
-    .blue { color: var(--blue); }
-    .purple { color: var(--purple); }
-    .red { color: var(--red); }
-    .muted { color: rgba(255,255,255,0.6); }
-    .label { text-transform: uppercase; font-size: 0.7em; font-weight: 700; letter-spacing: 0.15em; color: var(--accent); margin-bottom: 8px; }
-    .subtitle { font-size: 1.05em; color: rgba(255,255,255,0.85); max-width: 700px; }
-    .center { text-align: center; }
-
-    /* Stats Row */
-    .stats-row { display: flex; gap: 40px; margin-top: 32px; flex-wrap: wrap; }
-    .stat { text-align: center; }
-    .stat-num { font-size: 2.4em; font-weight: 900; color: var(--accent); line-height: 1; }
-    .stat-label { font-size: 0.65em; text-transform: uppercase; letter-spacing: 0.1em; color: rgba(255,255,255,0.7); margin-top: 4px; }
-
-    /* Cards Grid */
-    .card-grid { display: grid; gap: 16px; margin-top: 24px; }
-    .card-grid.cols-2 { grid-template-columns: 1fr 1fr; }
-    .card-grid.cols-3 { grid-template-columns: 1fr 1fr 1fr; }
-    .card-grid.cols-4 { grid-template-columns: 1fr 1fr 1fr 1fr; }
-    .card {
-      background: var(--dark-card); border: 1px solid var(--dark-border);
-      border-radius: 12px; padding: 20px;
+    .reveal-viewport {
+      background: var(--dark-bg);
+      background-image:
+        radial-gradient(ellipse at 20% 50%, rgba(249,115,22,0.05) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 20%, rgba(124,58,237,0.04) 0%, transparent 50%);
     }
-    .card h4 { font-size: 0.85em; font-weight: 700; margin-bottom: 6px; color: #fff; }
-    .card p { font-size: 0.72em; color: rgba(255,255,255,0.78); line-height: 1.5; margin: 0; }
-    .card .icon { font-size: 1.5em; margin-bottom: 8px; display: block; }
-    .card.accent-top { border-top: 3px solid var(--accent); }
-    .card.green-top { border-top: 3px solid var(--green); }
-    .card.blue-top { border-top: 3px solid var(--blue); }
-    .card.purple-top { border-top: 3px solid var(--purple); }
-    .card.red-left { border-left: 3px solid var(--red); }
+
+    .reveal { font-family: 'Inter', sans-serif; font-size: 32px; color: var(--text-primary); }
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+      font-family: 'Inter', sans-serif; font-weight: 700; letter-spacing: -0.03em;
+      color: #fff; text-transform: none; line-height: 1.15;
+    }
+    .reveal h1 { font-size: 2.4em; }
+    .reveal h2 { font-size: 1.6em; margin-bottom: 0.6em; }
+    .reveal h3 { font-size: 1.2em; color: var(--accent); font-weight: 600; }
+    .reveal p { line-height: 1.6; color: var(--text-secondary); }
+    .reveal li { line-height: 1.5; margin-bottom: 0.3em; }
+    .reveal .slide-number { color: var(--text-muted); font-family: 'JetBrains Mono', monospace; font-size: 12px; }
+    .reveal .progress { color: var(--accent); height: 3px; }
+    .reveal .controls { color: var(--accent); }
+    .reveal ul { list-style: none; padding-left: 0; }
+    .reveal ul li::before { content: '\2022'; color: var(--accent); font-weight: bold; display: inline-block; width: 1em; margin-left: -0.5em; }
+    .reveal ul li { padding-left: 0.5em; font-size: 0.75em; color: var(--text-secondary); }
+
+    .drama { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 400; }
+    .accent { color: var(--accent); }
+    .accent-bold { color: var(--accent); font-weight: 700; }
+    .green { color: var(--green); }
+    .red { color: var(--red); }
+
+    .section-title { text-align: center; }
+    .section-title h2 { font-size: 2em; margin-bottom: 0.3em; position: relative; display: inline-block; }
+    .section-title h2::after {
+      content: ''; position: absolute; bottom: -8px; left: 50%; width: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--purple)); border-radius: 2px;
+      transition: width 0.8s ease, left 0.8s ease;
+    }
+    .reveal .present .section-title h2::after { width: 80px; left: calc(50% - 40px); }
+    .section-title .section-label {
+      font-family: 'JetBrains Mono', monospace; font-size: 0.45em; color: var(--accent);
+      letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.5em; display: block;
+    }
+
+    .gradient-line {
+      height: 3px; width: 120px;
+      background: linear-gradient(90deg, var(--accent), var(--purple), var(--accent));
+      background-size: 200% 100%; border-radius: 2px; margin: 0.5em auto;
+      animation: shimmer 3s ease infinite;
+    }
+    @keyframes shimmer { 0%,100% { background-position: 0% 50%; } 50% { background-position: 100% 50%; } }
+
+    .noise {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 9999; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    }
+
+    .slide-footer {
+      position: fixed; bottom: 12px; right: 20px; font-size: 14px;
+      color: rgba(255,255,255,0.45); z-index: 100; pointer-events: none;
+    }
+
+    /* Stats */
+    .stat-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.2rem; }
+    .stat-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: 16px; padding: 1.2rem; text-align: center;
+    }
+    .stat-card .number { font-size: 2em; font-weight: 800; color: var(--accent); line-height: 1; margin-bottom: 0.2em; }
+    .stat-card .label { font-size: 0.5em; color: var(--text-secondary); line-height: 1.3; }
 
     /* Problem cards */
-    .problem-num { font-size: 2em; font-weight: 900; color: var(--red); margin: 8px 0 2px; line-height: 1; }
-    .problem-label { font-size: 0.7em; color: rgba(255,255,255,0.6); }
+    .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; margin-top: 1.2rem; }
+    .problem-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 14px;
+      padding: 1.2rem; text-align: left; border-left: 3px solid var(--red);
+    }
+    .problem-card .icon { font-size: 1.4em; margin-bottom: 0.4em; display: block; }
+    .problem-card h4 { font-size: 0.7em; font-weight: 700; margin-bottom: 0.3em; }
+    .problem-card p { font-size: 0.5em; color: var(--text-secondary); margin: 0; line-height: 1.4; }
+    .problem-card .big-num { font-size: 1.8em; font-weight: 900; color: var(--red); margin: 0.3em 0 0.1em; line-height: 1; }
+    .problem-card .num-label { font-size: 0.45em; color: var(--text-muted); }
 
     /* Pillar cards */
-    .pillar-num {
-      width: 28px; height: 28px; border-radius: 50%; display: inline-flex;
-      align-items: center; justify-content: center; font-weight: 800; font-size: 0.75em;
-      margin-bottom: 8px; color: #fff;
+    .pillar-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; margin-top: 1.2rem; }
+    .pillar-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 14px;
+      padding: 1.2rem; text-align: center; transition: border-color 0.3s, box-shadow 0.3s;
     }
+    .pillar-card:hover { border-color: rgba(249,115,22,0.3); box-shadow: 0 4px 30px rgba(249,115,22,0.08); }
+    .pillar-card .num {
+      width: 28px; height: 28px; border-radius: 50%; display: inline-flex;
+      align-items: center; justify-content: center; font-weight: 800; font-size: 0.65em;
+      margin-bottom: 0.4em; color: #fff;
+    }
+    .pillar-card .icon { font-size: 1.4em; margin-bottom: 0.3em; display: block; }
+    .pillar-card h4 { font-size: 0.65em; font-weight: 700; margin-bottom: 0.2em; }
+    .pillar-card p { font-size: 0.45em; color: var(--text-secondary); margin: 0; line-height: 1.4; }
 
-    /* Opp stats */
-    .opp-stat { text-align: center; padding: 24px; background: var(--dark-card); border-radius: 12px; border: 1px solid var(--dark-border); }
-    .opp-num { font-size: 2.2em; font-weight: 900; color: var(--accent); line-height: 1; }
-    .opp-label { font-size: 0.72em; color: rgba(255,255,255,0.78); margin-top: 8px; }
+    /* Feature grid */
+    .feature-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; margin-top: 1rem; }
+    .feature-pill {
+      background: var(--dark-card); border: 1px solid var(--dark-border);
+      border-radius: 12px; padding: 0.8rem 1rem; text-align: left;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .feature-pill:hover { border-color: rgba(249,115,22,0.3); box-shadow: 0 4px 30px rgba(249,115,22,0.08); }
+    .feature-pill .title { font-size: 0.6em; font-weight: 600; color: #fff; margin-bottom: 0.15em; display: flex; align-items: center; gap: 0.4em; }
+    .feature-pill .desc { font-size: 0.45em; color: var(--text-secondary); line-height: 1.4; }
+    .feature-pill .new-tag { background: var(--green); color: #fff; font-size: 0.7em; padding: 0.1em 0.4em; border-radius: 3px; font-weight: 700; }
 
-    /* Phone Mockup */
+    /* 3-col feature grid */
+    .feature-grid-3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-top: 1rem; }
+
+    /* Phone mockup */
     .phone-frame {
-      width: 280px; background: #000; border-radius: 28px; padding: 8px;
+      width: 240px; background: #000; border-radius: 24px; padding: 8px;
       box-shadow: 0 12px 40px rgba(0,0,0,0.5); flex-shrink: 0;
     }
     .phone-screen {
-      background: #ECE5DD; border-radius: 20px; overflow: hidden;
-      display: flex; flex-direction: column; min-height: 420px;
+      background: #ECE5DD; border-radius: 18px; overflow: hidden;
+      display: flex; flex-direction: column; min-height: 380px;
     }
-    .wa-header { background: var(--green-dark); color: #fff; padding: 10px 12px; display: flex; align-items: center; gap: 8px; }
-    .wa-header .avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.7em; }
-    .wa-header .name { font-weight: 600; font-size: 0.75em; }
-    .wa-header .status { font-size: 0.6em; opacity: 0.8; }
-    .wa-chat { flex: 1; padding: 8px; display: flex; flex-direction: column; gap: 4px; }
-    .wa-msg { max-width: 85%; padding: 6px 10px; border-radius: 6px; font-size: 0.62em; line-height: 1.45; color: #111; }
+    .wa-header { background: var(--green-dark); color: #fff; padding: 8px 10px; display: flex; align-items: center; gap: 6px; }
+    .wa-header .avatar { width: 24px; height: 24px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.5em; }
+    .wa-header .name { font-weight: 600; font-size: 0.55em; }
+    .wa-header .status { font-size: 0.4em; opacity: 0.8; }
+    .wa-chat { flex: 1; padding: 6px 8px; display: flex; flex-direction: column; gap: 3px; }
+    .wa-msg { max-width: 88%; padding: 5px 8px; border-radius: 6px; font-size: 0.42em; line-height: 1.4; color: #111; }
     .wa-msg.user { background: #DCF8C6; align-self: flex-end; }
     .wa-msg.bot { background: #fff; align-self: flex-start; }
-    .wa-msg .bot-name { font-size: 0.85em; color: var(--green-dark); font-weight: 600; margin-bottom: 2px; }
-    .wa-msg .time { font-size: 0.8em; color: #666; text-align: right; margin-top: 2px; }
-    .wa-input { background: #f0f0f0; padding: 6px 10px; display: flex; gap: 6px; align-items: center; }
-    .wa-input .field { flex: 1; background: #fff; border-radius: 16px; padding: 6px 12px; font-size: 0.6em; color: #999; }
-    .wa-input .send { width: 28px; height: 28px; border-radius: 50%; background: var(--green-dark); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.8em; }
+    .wa-msg .bot-name { font-size: 0.85em; color: var(--green-dark); font-weight: 600; margin-bottom: 1px; }
+    .wa-msg .time { font-size: 0.8em; color: #666; text-align: right; margin-top: 1px; }
 
     /* Demo layout */
-    .demo-layout { display: flex; gap: 32px; align-items: center; margin-top: 20px; }
-    .demo-desc { flex: 1; }
-    .demo-desc ul { list-style: none; padding: 0; margin: 12px 0 0; }
-    .demo-desc ul li { padding: 3px 0; font-size: 0.72em; color: rgba(255,255,255,0.85); }
-    .demo-desc ul li::before { content: '\2713'; color: var(--green); font-weight: 700; margin-right: 8px; }
+    .demo-layout { display: flex; gap: 2rem; align-items: center; margin-top: 1rem; }
+    .demo-desc { flex: 1; text-align: left; }
+    .demo-desc h3 { font-size: 0.85em; margin-bottom: 0.3em; }
+    .demo-desc p { font-size: 0.55em; }
+    .demo-desc ul { margin-top: 0.5em; }
+    .demo-desc ul li { font-size: 0.55em; margin-bottom: 0.15em; }
 
     /* Dashboard mockup */
-    .dash-frame { background: #fff; border-radius: 10px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.3); margin-top: 20px; color: #111; }
-    .dash-top { background: var(--dark-bg); color: #fff; padding: 10px 16px; display: flex; justify-content: space-between; align-items: center; font-size: 0.75em; font-weight: 600; }
-    .dash-content { display: flex; }
-    .dash-side { width: 160px; background: #f8f9fb; padding: 12px 0; border-right: 1px solid #e5e7eb; }
-    .dash-side-item { padding: 7px 14px; font-size: 0.65em; color: #555; display: flex; align-items: center; gap: 6px; }
-    .dash-side-item.active { color: var(--accent); font-weight: 600; background: rgba(249,115,22,0.06); border-left: 3px solid var(--accent); }
-    .dash-side-item .badge { margin-left: auto; background: var(--accent); color: #fff; font-size: 0.8em; padding: 1px 5px; border-radius: 8px; }
-    .dash-main { flex: 1; padding: 16px; }
-    .dash-stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 10px; margin-bottom: 14px; }
-    .dash-stat { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 10px; }
-    .dash-stat .ds-label { font-size: 0.55em; color: #888; text-transform: uppercase; letter-spacing: 0.05em; }
-    .dash-stat .ds-value { font-size: 1.2em; font-weight: 800; color: var(--dark-bg); }
-    .dash-stat .ds-change { font-size: 0.55em; color: #16a34a; font-weight: 600; }
-    .dash-table { width: 100%; border-collapse: collapse; font-size: 0.62em; }
-    .dash-table th { text-align: left; padding: 6px 8px; color: #888; font-size: 0.85em; text-transform: uppercase; border-bottom: 1px solid #e5e7eb; }
-    .dash-table td { padding: 6px 8px; border-bottom: 1px solid #f0f0f0; color: #333; }
-    .dash-table .product-name { font-weight: 600; color: #111; }
-    .online-badge { background: #dcfce7; color: #166534; padding: 2px 8px; border-radius: 10px; font-size: 0.85em; font-weight: 600; }
-
-    /* Chatbot Mockup */
-    .chatbot-frame { width: 300px; background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 8px 32px rgba(0,0,0,0.3); flex-shrink: 0; }
-    .cb-header { background: var(--dark-bg); color: #fff; padding: 12px 16px; display: flex; align-items: center; gap: 10px; }
-    .cb-avatar { width: 32px; height: 32px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.7em; }
-    .cb-name { font-weight: 600; font-size: 0.8em; }
-    .cb-status { font-size: 0.6em; color: rgba(255,255,255,0.6); }
-    .cb-body { padding: 14px; background: #f8fafc; }
-    .cb-msg { margin-bottom: 10px; font-size: 0.72em; line-height: 1.5; border-radius: 10px; padding: 10px; }
-    .cb-msg.user-msg { background: var(--blue); color: #fff; text-align: right; border-radius: 10px 10px 2px 10px; }
-    .cb-msg.bot-msg { background: #fff; color: #333; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border-radius: 10px 10px 10px 2px; }
-
-    /* E-commerce features */
-    .ecom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 20px; }
-    .ecom-card { background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 10px; padding: 18px; text-align: center; border-top: 3px solid var(--purple); }
-    .ecom-card .icon { font-size: 1.6em; margin-bottom: 6px; display: block; }
-    .ecom-card h4 { font-size: 0.8em; font-weight: 700; margin-bottom: 4px; }
-    .ecom-card p { font-size: 0.65em; color: rgba(255,255,255,0.75); margin: 0; }
-
-    /* Why us */
-    .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
-    .why-card { display: flex; gap: 12px; align-items: flex-start; background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 10px; padding: 16px; }
-    .why-icon { font-size: 1.3em; flex-shrink: 0; width: 36px; height: 36px; display: flex; align-items: center; justify-content: center; background: rgba(249,115,22,0.12); border-radius: 8px; }
-    .why-card h4 { font-size: 0.8em; font-weight: 700; margin-bottom: 3px; }
-    .why-card p { font-size: 0.65em; color: rgba(255,255,255,0.75); margin: 0; line-height: 1.5; }
-
-    /* CTA slide */
-    .cta-btn {
-      display: inline-flex; align-items: center; gap: 8px; background: var(--green);
-      color: #fff; padding: 14px 28px; border-radius: 40px; font-weight: 700;
-      font-size: 0.9em; text-decoration: none; margin-top: 20px;
-      transition: all 0.3s;
+    .dash-frame {
+      background: #fff; border-radius: 12px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3); margin-top: 1rem; color: #111;
+      max-width: 850px; margin-left: auto; margin-right: auto;
     }
-    .cta-btn:hover { background: #1ebe5d; transform: translateY(-2px); }
-    .cta-secondary { display: block; margin-top: 12px; font-size: 0.75em; color: rgba(255,255,255,0.6); text-decoration: none; }
+    .dash-top { background: var(--dark-bg); color: #fff; padding: 8px 14px; display: flex; justify-content: space-between; align-items: center; font-size: 0.55em; font-weight: 600; }
+    .dash-content { display: flex; }
+    .dash-side { width: 140px; background: #f8f9fb; padding: 8px 0; border-right: 1px solid #e5e7eb; }
+    .dash-side-item { padding: 5px 10px; font-size: 0.42em; color: #555; display: flex; align-items: center; gap: 4px; }
+    .dash-side-item.active { color: var(--accent); font-weight: 600; background: rgba(249,115,22,0.06); border-left: 2px solid var(--accent); }
+    .dash-side-item .badge { margin-left: auto; background: var(--accent); color: #fff; font-size: 0.8em; padding: 1px 4px; border-radius: 6px; }
+    .dash-main { flex: 1; padding: 12px; }
+    .dash-stats-row { display: grid; grid-template-columns: repeat(4,1fr); gap: 8px; margin-bottom: 10px; }
+    .dash-stat { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 8px; text-align: left; }
+    .dash-stat .ds-label { font-size: 0.38em; color: #888; text-transform: uppercase; }
+    .dash-stat .ds-value { font-size: 0.85em; font-weight: 800; color: var(--dark-bg); }
+    .dash-stat .ds-change { font-size: 0.35em; color: #16a34a; font-weight: 600; }
+
+    /* Chatbot mockup */
+    .chatbot-frame {
+      width: 280px; background: #fff; border-radius: 14px; overflow: hidden;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.3); flex-shrink: 0;
+    }
+    .cb-header { background: var(--dark-bg); color: #fff; padding: 10px 14px; display: flex; align-items: center; gap: 8px; }
+    .cb-avatar { width: 28px; height: 28px; border-radius: 50%; background: var(--accent); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.5em; }
+    .cb-name { font-weight: 600; font-size: 0.6em; }
+    .cb-status { font-size: 0.4em; color: rgba(255,255,255,0.6); }
+    .cb-body { padding: 12px; background: #f8fafc; }
+    .cb-msg { margin-bottom: 8px; font-size: 0.5em; line-height: 1.4; border-radius: 8px; padding: 8px; }
+    .cb-msg.user-msg { background: var(--blue); color: #fff; text-align: right; border-radius: 8px 8px 2px 8px; }
+    .cb-msg.bot-msg { background: #fff; color: #333; box-shadow: 0 1px 3px rgba(0,0,0,0.06); border-radius: 8px 8px 8px 2px; }
+
+    /* Ecom grid */
+    .ecom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.8rem; margin-top: 1rem; }
+    .ecom-card {
+      background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 12px;
+      padding: 1rem; text-align: center; border-top: 2px solid var(--purple);
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .ecom-card:hover { border-color: rgba(124,58,237,0.3); box-shadow: 0 4px 30px rgba(124,58,237,0.08); }
+    .ecom-card .icon { font-size: 1.3em; margin-bottom: 0.3em; display: block; }
+    .ecom-card h4 { font-size: 0.6em; font-weight: 700; margin-bottom: 0.15em; }
+    .ecom-card p { font-size: 0.42em; color: var(--text-secondary); margin: 0; line-height: 1.3; }
+
+    /* Why grid */
+    .why-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 0.8rem; margin-top: 1rem; max-width: 850px; margin-left: auto; margin-right: auto; }
+    .why-card {
+      display: flex; gap: 0.6em; align-items: flex-start;
+      background: var(--dark-card); border: 1px solid var(--dark-border); border-radius: 12px; padding: 0.8rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+    .why-card:hover { border-color: rgba(249,115,22,0.3); box-shadow: 0 4px 30px rgba(249,115,22,0.08); }
+    .why-icon { font-size: 1.1em; flex-shrink: 0; width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; background: rgba(249,115,22,0.12); border-radius: 8px; }
+    .why-card h4 { font-size: 0.6em; font-weight: 700; margin-bottom: 0.15em; }
+    .why-card p { font-size: 0.42em; color: var(--text-secondary); margin: 0; line-height: 1.4; }
+
+    /* Animations */
+    .reveal .fragment.fade-up { opacity: 0; transform: translateY(20px); transition: all 0.5s ease; }
+    .reveal .fragment.fade-up.visible { opacity: 1; transform: translateY(0); }
+    .reveal .fragment.scale-up { opacity: 0; transform: scale(0.8); transition: all 0.5s cubic-bezier(0.175,0.885,0.32,1.275); }
+    .reveal .fragment.scale-up.visible { opacity: 1; transform: scale(1); }
+
+    .reveal blockquote {
+      background: var(--dark-card); border-left: 3px solid var(--accent); border-radius: 0 12px 12px 0;
+      padding: 0.8rem 1.2rem; font-size: 0.65em; color: var(--text-secondary); font-style: italic;
+      width: 80%; margin: 0.8rem auto;
+    }
   </style>
 </head>
 <body>
-<div class="reveal">
-<div class="slides">
+  <div class="noise"></div>
+  <div class="reveal">
+    <div class="slides">
 
-<!-- SLIDE 1: HERO -->
-<section data-background="linear-gradient(135deg, #0A0F1C 0%, #1a237e 50%, #0d1442 100%)">
-  <p class="label">Digital Transformation for Sports Retail</p>
-  <h1>Your 40-Year Legacy<br>Deserves a <span class="accent">Digital Future</span></h1>
-  <p class="subtitle">From Pimple Saudagar to every phone in Pune. Securing your online presence, automating sales, and making your 50,000+ products visible to the world.</p>
-  <div class="stats-row">
-    <div class="stat"><div class="stat-num">50,000+</div><div class="stat-label">Products</div></div>
-    <div class="stat"><div class="stat-num">40+</div><div class="stat-label">Years of Trust</div></div>
-    <div class="stat"><div class="stat-num">4</div><div class="stat-label">Stores in Pune</div></div>
-    <div class="stat"><div class="stat-num">96%</div><div class="stat-label">Invisible Online</div></div>
-  </div>
-</section>
-
-<!-- SLIDE 2: THE PROBLEM -->
-<section data-background="#0f172a">
-  <p class="label">The Problem</p>
-  <h2>What's Happening <span class="red">Right Now</span></h2>
-  <p class="subtitle">Three critical issues costing you customers every single day.</p>
-  <div class="card-grid cols-3" style="margin-top:24px;">
-    <div class="card red-left">
-      <span class="icon">🔓</span>
-      <h4>Website Hacked Since 2022</h4>
-      <p>Casino spam injected into your search results. Damages trust and Google ranking.</p>
-      <div class="problem-num">12</div>
-      <div class="problem-label">Critical vulnerabilities</div>
-    </div>
-    <div class="card red-left">
-      <span class="icon">👻</span>
-      <h4>96% of Products Invisible</h4>
-      <p>50,000+ products in Genesis POS, but only 1,982 visible online. 48,000 products no customer can find.</p>
-      <div class="problem-num">1,982</div>
-      <div class="problem-label">of 50,000+ products online</div>
-    </div>
-    <div class="card red-left">
-      <span class="icon">📱</span>
-      <h4>No Digital Sales Channels</h4>
-      <p>No WhatsApp bot, no website chatbot, no mobile app. Customers wait hours for manual replies - or go to competitors.</p>
-      <div class="problem-num">0</div>
-      <div class="problem-label">Automated touchpoints</div>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 3: THE OPPORTUNITY -->
-<section data-background="linear-gradient(135deg, #1e293b, #0f172a)" class="center">
-  <p class="label">The Opportunity</p>
-  <h2>What You're <span class="accent">Missing Every Day</span></h2>
-  <p class="subtitle" style="margin:0 auto 32px;">Your brand and catalog are unmatched in Pune. You just need the digital infrastructure to unlock it.</p>
-  <div class="card-grid cols-3">
-    <div class="opp-stat">
-      <div class="opp-num">1.5-3L</div>
-      <div class="opp-label">Estimated monthly revenue lost to competitors with online presence</div>
-    </div>
-    <div class="opp-stat">
-      <div class="opp-num">73%</div>
-      <div class="opp-label">Sports equipment buyers research online before visiting a store</div>
-    </div>
-    <div class="opp-stat">
-      <div class="opp-num">24/7</div>
-      <div class="opp-label">Hours your competitors' bots and websites are capturing leads</div>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 4: OUR APPROACH - 4 PILLARS -->
-<section class="center">
-  <p class="label">Our Approach</p>
-  <h2>4 Pillars of <span class="accent">Digital Transformation</span></h2>
-  <p class="subtitle" style="margin: 0 auto;">Each pillar works independently. Start with one, add more when ready. No lock-in.</p>
-  <div class="card-grid cols-4" style="margin-top:28px;">
-    <div class="card accent-top center">
-      <div class="pillar-num" style="background:var(--accent);">1</div>
-      <span class="icon">🛡️</span>
-      <h4>Secure & Organize</h4>
-      <p>Fix hacked site, sync 50K products, security + SEO + GEO monitoring</p>
-    </div>
-    <div class="card green-top center">
-      <div class="pillar-num" style="background:var(--green);">2</div>
-      <span class="icon">🤖</span>
-      <h4>AI WhatsApp Agent</h4>
-      <p>24/7 sales bot with payments, broadcasts, and campaign engine</p>
-    </div>
-    <div class="card blue-top center">
-      <div class="pillar-num" style="background:var(--blue);">3</div>
-      <span class="icon">💬</span>
-      <h4>Smart Website</h4>
-      <p>AI chatbot on website, SEO/GEO monitoring, continuous security</p>
-    </div>
-    <div class="card purple-top center">
-      <div class="pillar-num" style="background:var(--purple);">4</div>
-      <span class="icon">🛒</span>
-      <h4>Store & App</h4>
-      <p>Modern e-commerce + mobile app with all payment modes</p>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 5: PILLAR 1 - SECURE & ORGANIZE -->
-<section>
-  <p class="label">Pillar 1</p>
-  <h2>Secure & Organize</h2>
-  <p class="subtitle">Fix what's broken, build the digital foundation everything else runs on.</p>
-  <div class="card-grid cols-2" style="margin-top:20px;">
-    <div class="card accent-top">
-      <span class="icon">🔒</span>
-      <h4>Security Cleanup & Hardening</h4>
-      <p>Remove all malware and casino spam. Patch WordPress. Harden SSL. Set up monitoring so it never happens again.</p>
-    </div>
-    <div class="card accent-top">
-      <span class="icon">🔄</span>
-      <h4>Genesis POS Sync</h4>
-      <p>Connect your Genesis system directly. All 50,000+ products go online with real-time stock levels across all 4 stores.</p>
-    </div>
-    <div class="card accent-top">
-      <span class="icon">📊</span>
-      <h4>Website Intelligence Platform</h4>
-      <p>900+ automated security tests. SEO audit with A+ to F grading. Google Business optimization for all 4 store locations.</p>
-    </div>
-    <div class="card green-top">
-      <span class="icon">🧠</span>
-      <h4>GEO Score - AI Visibility</h4>
-      <p>New metric: Is Shakti Sports visible when someone asks ChatGPT or Google AI for "best cricket bats in Pune"? We make sure the answer is yes.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 6: PILLAR 2 - AI WHATSAPP AGENT -->
-<section>
-  <p class="label">Pillar 2</p>
-  <h2>AI WhatsApp Sales Agent</h2>
-  <p class="subtitle">Custom AI trained on your 50,000+ catalog. Answers in Hindi, Marathi, English. Closes sales while you sleep.</p>
-  <div class="card-grid cols-3" style="margin-top:20px;">
-    <div class="card accent-top">
-      <span class="icon">💬</span>
-      <h4>Instant Recommendations</h4>
-      <p>"Cricket bat under 5,000 for a 14-year-old" - bot shows best options with prices and availability instantly.</p>
-    </div>
-    <div class="card accent-top">
-      <span class="icon">🕐</span>
-      <h4>Works 24/7</h4>
-      <p>2 AM or 9 PM, weekday or festival - responds in under 5 seconds. No missed leads.</p>
-    </div>
-    <div class="card accent-top">
-      <span class="icon">🗣️</span>
-      <h4>Multilingual</h4>
-      <p>Hindi, Marathi, English. Understands slang, mixed-language queries, and voice messages.</p>
-    </div>
-    <div class="card green-top">
-      <span class="icon">💳</span>
-      <h4>Pay Inside WhatsApp</h4>
-      <p>Razorpay payment link generated in chat. Customer browses, selects, pays - without leaving WhatsApp.</p>
-    </div>
-    <div class="card green-top">
-      <span class="icon">📢</span>
-      <h4>Broadcast & Campaigns</h4>
-      <p>IPL season? Blast cricket gear offers to cricket buyers only. Segment audiences, schedule promotions.</p>
-    </div>
-    <div class="card accent-top">
-      <span class="icon">🔒</span>
-      <h4>You Stay In Control</h4>
-      <p>Override responses, handle VIPs personally, set limits. Full admin dashboard with every conversation.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 7: LIVE CHAT DEMO -->
-<section data-background="#0f172a">
-  <p class="label">Live Demo</p>
-  <h2>See How the Bot <span class="green">Actually Talks</span></h2>
-  <div class="demo-layout">
-    <div class="phone-frame">
-      <div class="phone-screen">
-        <div class="wa-header">
-          <div class="avatar">S</div>
-          <div><div class="name">Shakti Sports AI</div><div class="status">online</div></div>
+      <!-- SLIDE 1: TITLE -->
+      <section data-transition="fade" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(249,115,22,0.06) 0%, var(--dark-bg) 70%)">
+        <div style="margin-top: -1em;">
+          <div style="font-size: 2.8em; font-weight: 800; letter-spacing: -0.04em; margin-bottom: 0.1em;">
+            <span style="color: #fff;">Shakti</span><span style="color: var(--accent);">Sports</span>
+          </div>
+          <div class="gradient-line"></div>
+          <p class="fragment fade-up" style="font-size: 0.7em; color: var(--text-secondary); margin-top: 0.8em;">
+            Your 40-Year Legacy Deserves a<br>
+            <span class="drama" style="color: var(--accent); font-size: 1.2em;">Digital Future</span>
+          </p>
+          <p class="fragment fade-up" style="font-size: 0.5em; color: var(--text-muted); margin-top: 1em;">
+            From Pimple Saudagar to every phone in Pune
+          </p>
+          <p class="fragment fade-up" style="font-size: 0.4em; color: var(--text-muted); margin-top: 1.5em; font-family: 'JetBrains Mono', monospace;">
+            Digital Transformation Proposal
+          </p>
         </div>
-        <div class="wa-chat">
-          <div class="wa-msg user">Hi, I need a cricket bat for my son, 14 years old. Budget 3,000.<div class="time">2:14 AM</div></div>
-          <div class="wa-msg bot"><div class="bot-name">Shakti Sports AI</div>Namaste! For a 14-year-old, I recommend Size 5/6:<br><br>1. <strong>SG Nexus Plus</strong> - Rs 2,450<br>2. <strong>SS Ton Gutsy</strong> - Rs 2,850<br>3. <strong>Kookaburra Kahuna</strong> - Rs 2,990<br><br>Shall I share photos?<div class="time">2:14 AM</div></div>
-          <div class="wa-msg user">SS Ton looks good. Available now? Can I pick up tomorrow?<div class="time">2:15 AM</div></div>
-          <div class="wa-msg bot"><div class="bot-name">Shakti Sports AI</div>Yes! <strong>SS Ton Gutsy</strong> is in stock at Pimple Saudagar store.<br><br>I also recommend <strong>batting gloves</strong> (Rs 450-800).<br><br>I'll reserve it - what name?<div class="time">2:15 AM</div></div>
-          <div class="wa-msg user">Amit Patil. I'll come by 11 AM.<div class="time">2:16 AM</div></div>
-          <div class="wa-msg bot"><div class="bot-name">Shakti Sports AI</div>Done! Reserved for <strong>Amit Patil</strong>:<br>SS Ton Gutsy - Rs 2,850<br>Tomorrow, 11 AM pickup<br>Pimple Saudagar store<br><br>See you tomorrow!<div class="time">2:16 AM</div></div>
+      </section>
+
+      <!-- SECTION 1: THE PROBLEM -->
+      <section data-transition="slide" data-background-gradient="radial-gradient(ellipse at center, rgba(239,68,68,0.06) 0%, var(--dark-bg) 70%)">
+        <div class="section-title">
+          <span class="section-label">Section 01</span>
+          <h2>The <span class="accent">Problem</span></h2>
+          <p style="font-size: 0.6em; color: var(--text-muted);">Three critical issues costing you customers every day</p>
         </div>
-        <div class="wa-input"><div class="field">Type a message...</div><div class="send">&#9654;</div></div>
-      </div>
-    </div>
-    <div class="demo-desc">
-      <h3>2 AM inquiry - sale confirmed in 2 minutes</h3>
-      <p style="font-size:0.78em; color:rgba(255,255,255,0.82);">No human was awake. No lead was lost. The AI knew the catalog, checked stock, recommended accessories, and reserved the item.</p>
-      <ul>
-        <li>Age-appropriate product sizing</li>
-        <li>Real-time inventory across 4 stores</li>
-        <li>Cross-sells related products</li>
-        <li>Reservation and pickup scheduling</li>
-        <li>Multilingual - Hindi, Marathi, English</li>
-        <li>Payment via Razorpay link in chat</li>
-        <li>Escalation to human for complex queries</li>
-        <li>Every conversation logged in dashboard</li>
-      </ul>
-    </div>
-  </div>
-</section>
+      </section>
 
-<!-- SLIDE 8: ADMIN DASHBOARD -->
-<section>
-  <p class="label">Admin Dashboard</p>
-  <h2>Complete Visibility. <span class="accent">Total Control.</span></h2>
-  <div class="dash-frame">
-    <div class="dash-top">
-      <div style="display:flex;align-items:center;gap:8px;"><span style="background:var(--accent);width:24px;height:24px;border-radius:6px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:0.7em;">S</span> Shakti Sports Admin</div>
-      <div>Mr. Kadam</div>
-    </div>
-    <div class="dash-content">
-      <div class="dash-side">
-        <div class="dash-side-item active"><span>📊</span> Dashboard</div>
-        <div class="dash-side-item"><span>📦</span> Products <span class="badge">50K+</span></div>
-        <div class="dash-side-item"><span>🛒</span> Orders <span class="badge">23</span></div>
-        <div class="dash-side-item"><span>💬</span> Chats <span class="badge">47</span></div>
-        <div class="dash-side-item"><span>💳</span> Payments <span class="badge">18</span></div>
-        <div class="dash-side-item"><span>📢</span> Broadcasts</div>
-        <div class="dash-side-item"><span>⚙️</span> Settings</div>
-      </div>
-      <div class="dash-main">
-        <div class="dash-stats-row">
-          <div class="dash-stat"><div class="ds-label">Products Online</div><div class="ds-value">12,847</div><div class="ds-change">+2,340 this month</div></div>
-          <div class="dash-stat"><div class="ds-label">Monthly Orders</div><div class="ds-value">347</div><div class="ds-change">+28% vs last month</div></div>
-          <div class="dash-stat"><div class="ds-label">Bot Conversations</div><div class="ds-value">1,283</div><div class="ds-change">+45% engagement</div></div>
-          <div class="dash-stat"><div class="ds-label">WhatsApp Revenue</div><div class="ds-value">Rs 4.2L</div><div class="ds-change">New channel</div></div>
+      <!-- Problem Details -->
+      <section data-transition="fade">
+        <h2 style="font-size: 1.3em;">What's Happening <span class="red">Right Now</span></h2>
+        <div class="problem-grid">
+          <div class="problem-card fragment fade-up">
+            <span class="icon">🔓</span>
+            <h4>Website Hacked Since 2022</h4>
+            <p>Casino spam injected into Google search results. WordPress 3 years outdated.</p>
+            <div class="big-num"><span class="counter" data-target="12">0</span></div>
+            <div class="num-label">Critical vulnerabilities</div>
+          </div>
+          <div class="problem-card fragment fade-up">
+            <span class="icon">👻</span>
+            <h4>96% of Products Invisible</h4>
+            <p>50,000+ products in Genesis POS, but only 1,982 visible online.</p>
+            <div class="big-num">96%</div>
+            <div class="num-label">of catalog invisible to customers</div>
+          </div>
+          <div class="problem-card fragment fade-up">
+            <span class="icon">📱</span>
+            <h4>No Digital Sales Channels</h4>
+            <p>No WhatsApp bot, no website chatbot, no app. Customers wait hours or leave.</p>
+            <div class="big-num">0</div>
+            <div class="num-label">automated customer touchpoints</div>
+          </div>
         </div>
-        <table class="dash-table">
-          <thead><tr><th>Product</th><th>Category</th><th>Price</th><th>Stock</th><th>Status</th></tr></thead>
-          <tbody>
-            <tr><td class="product-name">SG Nexus Plus Cricket Bat</td><td>Cricket</td><td>Rs 2,450</td><td>34</td><td><span class="online-badge">Online</span></td></tr>
-            <tr><td class="product-name">Nivia Storm Football</td><td>Football</td><td>Rs 1,290</td><td>56</td><td><span class="online-badge">Online</span></td></tr>
-            <tr><td class="product-name">Yonex Mavis 350 Shuttlecock</td><td>Badminton</td><td>Rs 890</td><td>120</td><td><span class="online-badge">Online</span></td></tr>
-          </tbody>
-        </table>
-      </div>
+      </section>
+
+      <!-- Opportunity -->
+      <section data-transition="fade">
+        <h2 style="font-size: 1.3em;">What You're <span class="accent">Missing</span></h2>
+        <div class="stat-grid" style="grid-template-columns: repeat(3, 1fr);">
+          <div class="stat-card fragment fade-up">
+            <div class="number">1.5-3L</div>
+            <div class="label">Estimated monthly revenue<br>lost to online competitors</div>
+          </div>
+          <div class="stat-card fragment fade-up">
+            <div class="number"><span class="counter" data-target="73">0</span>%</div>
+            <div class="label">Sports buyers research<br>online before store visit</div>
+          </div>
+          <div class="stat-card fragment fade-up">
+            <div class="number">24/7</div>
+            <div class="label">Hours your competitors'<br>bots are capturing leads</div>
+          </div>
+        </div>
+        <blockquote class="fragment fade-up" style="margin-top: 1.2em;">
+          Your brand, catalog, and customer trust are unmatched in Pune.<br>You just need the digital infrastructure to unlock it.
+        </blockquote>
+      </section>
+
+      <!-- SECTION 2: OUR APPROACH -->
+      <section data-transition="convex" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(249,115,22,0.06) 0%, var(--dark-bg) 70%)">
+        <div class="section-title">
+          <span class="section-label">Section 02</span>
+          <h2>Our <span class="accent">Approach</span></h2>
+          <p style="font-size: 0.6em; color: var(--text-muted);">4 independent pillars - start with one, add more when ready</p>
+        </div>
+      </section>
+
+      <!-- 4 Pillars Overview -->
+      <section data-transition="fade">
+        <h2 style="font-size: 1.3em;">4 Pillars of <span class="accent">Digital Transformation</span></h2>
+        <div class="pillar-grid">
+          <div class="pillar-card fragment fade-up">
+            <div class="num" style="background:var(--accent);">1</div>
+            <span class="icon">🛡️</span>
+            <h4>Secure & Organize</h4>
+            <p>Fix hacked site, sync 50K products, SEO + GEO + security monitoring</p>
+          </div>
+          <div class="pillar-card fragment fade-up">
+            <div class="num" style="background:var(--green);">2</div>
+            <span class="icon">🤖</span>
+            <h4>AI WhatsApp Agent</h4>
+            <p>24/7 sales bot with payments, broadcasts, and campaign engine</p>
+          </div>
+          <div class="pillar-card fragment fade-up">
+            <div class="num" style="background:var(--blue);">3</div>
+            <span class="icon">💬</span>
+            <h4>Smart Website</h4>
+            <p>AI chatbot on website, SEO/GEO dashboard, continuous security</p>
+          </div>
+          <div class="pillar-card fragment fade-up">
+            <div class="num" style="background:var(--purple);">4</div>
+            <span class="icon">🛒</span>
+            <h4>Store & App</h4>
+            <p>Modern e-commerce + mobile app with all payment modes</p>
+          </div>
+        </div>
+        <p class="fragment fade-up" style="font-size: 0.5em; color: var(--text-muted); margin-top: 1em; text-align: center;">
+          Each pillar works independently. No lock-in. Start small, scale when ready.
+        </p>
+      </section>
+
+      <!-- PILLAR 1 -->
+      <section data-transition="fade">
+        <h2 style="font-size: 1.2em;"><span style="color:var(--accent);font-family:'JetBrains Mono';font-size:0.6em;">PILLAR 1</span><br>Secure & Organize</h2>
+        <div class="feature-grid">
+          <div class="feature-pill fragment fade-up">
+            <div class="title">🔒 Security Cleanup</div>
+            <div class="desc">Remove malware, patch WordPress, harden SSL. Continuous monitoring so it never happens again.</div>
+          </div>
+          <div class="feature-pill fragment fade-up">
+            <div class="title">🔄 Genesis POS Sync</div>
+            <div class="desc">All 50,000+ products online with real-time stock levels across all 4 stores.</div>
+          </div>
+          <div class="feature-pill fragment fade-up">
+            <div class="title">📊 Website Intelligence</div>
+            <div class="desc">900+ security tests. SEO audit with A+ to F grading. Google Business for all 4 locations.</div>
+          </div>
+          <div class="feature-pill fragment fade-up">
+            <div class="title">🧠 GEO Score <span class="new-tag">NEW</span></div>
+            <div class="desc">Is Shakti Sports visible when someone asks ChatGPT for "best cricket bats in Pune"? We track and optimize this.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PILLAR 2 -->
+      <section data-transition="fade">
+        <h2 style="font-size: 1.2em;"><span style="color:var(--green);font-family:'JetBrains Mono';font-size:0.6em;">PILLAR 2</span><br>AI WhatsApp Sales Agent</h2>
+        <div class="feature-grid-3">
+          <div class="feature-pill fragment fade-up">
+            <div class="title">💬 Smart Recommendations</div>
+            <div class="desc">"Cricket bat under 5K for a 14-year-old" - instant answers with prices and store availability.</div>
+          </div>
+          <div class="feature-pill fragment fade-up">
+            <div class="title">🕐 24/7 Availability</div>
+            <div class="desc">2 AM or festival day - responds in under 5 seconds. Hindi, Marathi, English.</div>
+          </div>
+          <div class="feature-pill fragment fade-up">
+            <div class="title">🔒 You Stay In Control</div>
+            <div class="desc">Override responses, handle VIPs personally, set limits. Full admin dashboard.</div>
+          </div>
+          <div class="feature-pill fragment fade-up">
+            <div class="title">💳 Pay in WhatsApp <span class="new-tag">NEW</span></div>
+            <div class="desc">Razorpay payment link in chat. Customer browses, selects, pays - without leaving WhatsApp.</div>
+          </div>
+          <div class="feature-pill fragment fade-up">
+            <div class="title">📢 Broadcasts <span class="new-tag">NEW</span></div>
+            <div class="desc">IPL season? Blast cricket gear offers to cricket buyers only. Segment and schedule campaigns.</div>
+          </div>
+          <div class="feature-pill fragment fade-up">
+            <div class="title">👥 Group Bot <span class="new-tag">NEW</span></div>
+            <div class="desc">Responds to @mentions in Shakti Sports community WhatsApp groups. Community engagement on autopilot.</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- LIVE DEMO -->
+      <section data-transition="fade" data-background-gradient="radial-gradient(ellipse at 30% 50%, rgba(37,211,102,0.06) 0%, var(--dark-bg) 70%)">
+        <h2 style="font-size: 1.2em;"><span style="color:var(--green);">Live</span> Demo</h2>
+        <div class="demo-layout">
+          <div class="phone-frame fragment scale-up">
+            <div class="phone-screen">
+              <div class="wa-header">
+                <div class="avatar">S</div>
+                <div><div class="name">Shakti Sports AI</div><div class="status">online</div></div>
+              </div>
+              <div class="wa-chat">
+                <div class="wa-msg user">Hi, cricket bat for my son, 14 years old. Budget 3,000.<div class="time">2:14 AM</div></div>
+                <div class="wa-msg bot"><div class="bot-name">Shakti Sports AI</div>Namaste! For a 14-year-old, Size 5/6:<br><br>1. <strong>SG Nexus Plus</strong> - Rs 2,450<br>2. <strong>SS Ton Gutsy</strong> - Rs 2,850<br>3. <strong>Kookaburra Kahuna</strong> - Rs 2,990<br><br>Want photos or to reserve?<div class="time">2:14 AM</div></div>
+                <div class="wa-msg user">SS Ton looks good. Available? Can I pick up tomorrow?<div class="time">2:15 AM</div></div>
+                <div class="wa-msg bot"><div class="bot-name">Shakti Sports AI</div>Yes! <strong>SS Ton Gutsy</strong> in stock at Pimple Saudagar.<br><br>Also recommend <strong>batting gloves</strong> (Rs 450-800).<br><br>What name for reservation?<div class="time">2:15 AM</div></div>
+                <div class="wa-msg user">Amit Patil. 11 AM tomorrow.<div class="time">2:16 AM</div></div>
+                <div class="wa-msg bot"><div class="bot-name">Shakti Sports AI</div>Done! Reserved for <strong>Amit Patil</strong>:<br>SS Ton Gutsy - Rs 2,850<br>Tomorrow 11 AM, Pimple Saudagar<br><br>See you!<div class="time">2:16 AM</div></div>
+              </div>
+            </div>
+          </div>
+          <div class="demo-desc">
+            <h3>2 AM inquiry - sale in 2 minutes</h3>
+            <p>No human was awake. No lead was lost. The AI knew the catalog, checked stock, cross-sold accessories, and reserved the item.</p>
+            <ul>
+              <li class="fragment fade-up">Age-appropriate product sizing</li>
+              <li class="fragment fade-up">Real-time inventory across 4 stores</li>
+              <li class="fragment fade-up">Cross-sells related products</li>
+              <li class="fragment fade-up">Payment via Razorpay in chat</li>
+              <li class="fragment fade-up">Hindi, Marathi, English</li>
+              <li class="fragment fade-up">Every conversation in admin dashboard</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- ADMIN DASHBOARD -->
+      <section data-transition="fade">
+        <h2 style="font-size: 1.2em;">Admin <span class="accent">Dashboard</span></h2>
+        <p style="font-size: 0.55em; color: var(--text-muted);">Products, orders, conversations, broadcasts, payments - one place</p>
+        <div class="dash-frame fragment fade-up">
+          <div class="dash-top">
+            <div style="display:flex;align-items:center;gap:6px;">
+              <span style="background:var(--accent);width:20px;height:20px;border-radius:5px;display:inline-flex;align-items:center;justify-content:center;font-weight:800;font-size:0.6em;">S</span>
+              Shakti Sports Admin
+            </div>
+            <div>Mr. Kadam</div>
+          </div>
+          <div class="dash-content">
+            <div class="dash-side">
+              <div class="dash-side-item active"><span>📊</span> Dashboard</div>
+              <div class="dash-side-item"><span>📦</span> Products <span class="badge">50K+</span></div>
+              <div class="dash-side-item"><span>🛒</span> Orders <span class="badge">23</span></div>
+              <div class="dash-side-item"><span>💬</span> Chats <span class="badge">47</span></div>
+              <div class="dash-side-item"><span>💳</span> Payments <span class="badge">18</span></div>
+              <div class="dash-side-item"><span>📢</span> Broadcasts</div>
+              <div class="dash-side-item"><span>⚙️</span> Settings</div>
+            </div>
+            <div class="dash-main">
+              <div class="dash-stats-row">
+                <div class="dash-stat"><div class="ds-label">Products Online</div><div class="ds-value">12,847</div><div class="ds-change">+2,340</div></div>
+                <div class="dash-stat"><div class="ds-label">Monthly Orders</div><div class="ds-value">347</div><div class="ds-change">+28%</div></div>
+                <div class="dash-stat"><div class="ds-label">Bot Conversations</div><div class="ds-value">1,283</div><div class="ds-change">+45%</div></div>
+                <div class="dash-stat"><div class="ds-label">WhatsApp Revenue</div><div class="ds-value">Rs 4.2L</div><div class="ds-change">New</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PILLAR 3 -->
+      <section data-transition="fade" data-background-gradient="radial-gradient(ellipse at 70% 50%, rgba(59,130,246,0.06) 0%, var(--dark-bg) 70%)">
+        <h2 style="font-size: 1.2em;"><span style="color:var(--blue);font-family:'JetBrains Mono';font-size:0.6em;">PILLAR 3</span><br>Smart Website - AI Chatbot</h2>
+        <div class="demo-layout">
+          <div class="chatbot-frame fragment scale-up">
+            <div class="cb-header">
+              <div class="cb-avatar">S</div>
+              <div><div class="cb-name">Shakti Sports</div><div class="cb-status">Online - Ask anything</div></div>
+            </div>
+            <div class="cb-body">
+              <div class="cb-msg user-msg">Cricket bats under 5,000 for a 14-year-old</div>
+              <div class="cb-msg bot-msg">Top picks for Size 5/6:<br><br><strong>1. SG Nexus Plus</strong> - Rs 2,450<br><strong>2. SS Ton Gutsy</strong> - Rs 2,850<br><strong>3. MRF Genius</strong> - Rs 4,200<br><br>All in stock. Reserve one?</div>
+            </div>
+          </div>
+          <div class="demo-desc">
+            <h3 style="color: var(--blue);">Same AI Brain, Different Channel</h3>
+            <p>Not everyone uses WhatsApp. A floating chatbot on your website catches every visitor.</p>
+            <ul>
+              <li class="fragment fade-up">Smart search across 50K products</li>
+              <li class="fragment fade-up">Hindi, Marathi, English</li>
+              <li class="fragment fade-up">SEO & GEO monitoring dashboard</li>
+              <li class="fragment fade-up">900+ security tests monthly</li>
+              <li class="fragment fade-up">Same admin dashboard as WhatsApp</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- PILLAR 4 -->
+      <section data-transition="fade">
+        <h2 style="font-size: 1.2em;"><span style="color:var(--purple);font-family:'JetBrains Mono';font-size:0.6em;">PILLAR 4</span><br>Premium Store & Mobile App</h2>
+        <p style="font-size: 0.5em; color: var(--text-muted);">Modern e-commerce replacing the hacked WordPress. "Shakti Sports" in every app store.</p>
+        <div class="ecom-grid">
+          <div class="ecom-card fragment fade-up"><span class="icon">🌐</span><h4>Modern Website</h4><p>Fast, secure, mobile-first. All 50K products with real-time stock.</p></div>
+          <div class="ecom-card fragment fade-up"><span class="icon">📱</span><h4>Android & iOS App</h4><p>"Shakti Sports" in Play Store and App Store. Push notifications.</p></div>
+          <div class="ecom-card fragment fade-up"><span class="icon">💳</span><h4>All Payment Modes</h4><p>UPI, cards, net banking, COD, EMI for big-ticket items.</p></div>
+          <div class="ecom-card fragment fade-up"><span class="icon">🔄</span><h4>Live Inventory</h4><p>Genesis POS across 4 stores. Real-time stock, no surprises.</p></div>
+          <div class="ecom-card fragment fade-up"><span class="icon">🚚</span><h4>Delivery + Pickup</h4><p>Home delivery across Pune. Store pickup with reservation.</p></div>
+          <div class="ecom-card fragment fade-up"><span class="icon">⭐</span><h4>Loyalty & Reviews</h4><p>Points, reviews, ratings. Build digital trust on your platform.</p></div>
+        </div>
+      </section>
+
+      <!-- WHY US -->
+      <section data-transition="fade">
+        <div class="section-title">
+          <span class="section-label" style="font-size: 0.4em;">Why Jarvis Daily</span>
+          <h2>Built for You, <span class="accent">Not by You</span></h2>
+        </div>
+        <div class="why-grid">
+          <div class="why-card fragment fade-up"><div class="why-icon">📍</div><div><h4>Pune-Local Team</h4><p>We visit your stores. We understand your customers. Not a remote agency.</p></div></div>
+          <div class="why-card fragment fade-up"><div class="why-icon">🧠</div><div><h4>AI-First Approach</h4><p>Custom AI trained on YOUR 50,000 products, pricing, and policies.</p></div></div>
+          <div class="why-card fragment fade-up"><div class="why-icon">🔐</div><div><h4>Your Data Stays Yours</h4><p>No vendor lock-in. Export anytime. Full ownership of everything.</p></div></div>
+          <div class="why-card fragment fade-up"><div class="why-icon">🏏</div><div><h4>40 Years in AI</h4><p>Your decades of sports knowledge encoded into the AI brain.</p></div></div>
+          <div class="why-card fragment fade-up"><div class="why-icon">📊</div><div><h4>Full Transparency</h4><p>Dashboard shows every conversation, order, and rupee. 24/7.</p></div></div>
+          <div class="why-card fragment fade-up"><div class="why-icon">🚀</div><div><h4>Start Small</h4><p>Begin with security fix. See results. Then add pillars one at a time.</p></div></div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section data-transition="fade" data-background-gradient="radial-gradient(ellipse at 50% 50%, rgba(249,115,22,0.06) 0%, var(--dark-bg) 70%)">
+        <div style="margin-top: 1em;">
+          <p class="drama" style="font-size: 1.8em; color: var(--accent);">Let's Talk</p>
+          <div class="gradient-line"></div>
+          <p style="font-size: 0.6em; color: var(--text-secondary); margin-top: 1em; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Start small - a security fix takes 7 days.<br>See results before committing to anything else.
+          </p>
+          <div style="margin-top: 1.5em; display: flex; justify-content: center; gap: 2em; font-size: 0.5em; color: var(--text-muted);">
+            <span>💬 wa.me/919765071249</span>
+            <span>📧 hello@jarvisdaily.com</span>
+          </div>
+          <div style="margin-top: 2em;">
+            <div style="font-size: 1.4em; font-weight: 800; letter-spacing: -0.04em;">
+              <span style="color: #fff;">Jarvis</span><span style="color: var(--accent);">Daily</span>
+            </div>
+            <p style="font-size: 0.4em; color: var(--text-muted); margin-top: 0.3em;">Tranquil Veda Private Limited</p>
+          </div>
+        </div>
+      </section>
+
     </div>
+    <div class="slide-footer">Jarvis Daily <span style="opacity:0.6;">by</span> Tranquil Veda</div>
   </div>
-</section>
 
-<!-- SLIDE 9: PILLAR 3 - SMART WEBSITE -->
-<section data-background="#0f172a">
-  <p class="label">Pillar 3</p>
-  <h2>Smart Website - <span class="blue">AI Chatbot</span></h2>
-  <div class="demo-layout" style="margin-top:20px;">
-    <div class="chatbot-frame">
-      <div class="cb-header">
-        <div class="cb-avatar">S</div>
-        <div><div class="cb-name">Shakti Sports Assistant</div><div class="cb-status">Online - Ask me anything</div></div>
-      </div>
-      <div class="cb-body">
-        <div class="cb-msg user-msg">Show me cricket bats under Rs 5,000 for a 14-year-old</div>
-        <div class="cb-msg bot-msg">Great choice! Top options for a 14-year-old (Size 5/6):<br><br><strong>1. SG Nexus Plus</strong> - Rs 2,450<br><strong>2. SS Ton Gutsy</strong> - Rs 2,850<br><strong>3. MRF Genius</strong> - Rs 4,200<br><br>All in stock at Pimple Saudagar. Reserve one?</div>
-      </div>
-    </div>
-    <div class="demo-desc">
-      <h3>Same AI Brain, Different Channel</h3>
-      <p style="font-size:0.78em; color:rgba(255,255,255,0.82);">Not everyone uses WhatsApp. A floating chatbot on your website catches every visitor.</p>
-      <ul>
-        <li>Smart search across 50K products</li>
-        <li>Hindi, Marathi, English support</li>
-        <li>SEO & GEO monitoring dashboard</li>
-        <li>"Is Shakti visible on ChatGPT?" - we track it</li>
-        <li>900+ security tests monthly</li>
-        <li>Same admin dashboard as WhatsApp</li>
-      </ul>
-    </div>
-  </div>
-</section>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/plugin/notes/notes.js"></script>
+  <script>
+    Reveal.initialize({
+      hash: true,
+      slideNumber: true,
+      transition: 'fade',
+      transitionSpeed: 'default',
+      backgroundTransition: 'fade',
+      center: true,
+      width: 1280,
+      height: 720,
+      margin: 0.08,
+      plugins: [RevealNotes],
+      keyboard: true,
+      overview: true,
+      progress: true,
+      controls: true,
+      controlsTutorial: false,
+      autoAnimateDuration: 0.8,
+      autoAnimateEasing: 'ease',
+    });
 
-<!-- SLIDE 10: PILLAR 4 - E-COMMERCE + APP -->
-<section>
-  <p class="label">Pillar 4</p>
-  <h2>Premium Store & <span class="purple">Mobile App</span></h2>
-  <p class="subtitle">Modern e-commerce replacing the hacked WordPress. Plus "Shakti Sports" in every app store.</p>
-  <div class="ecom-grid">
-    <div class="ecom-card">
-      <span class="icon">🌐</span>
-      <h4>Modern Website</h4>
-      <p>Fast, secure, mobile-first. All 50K+ products with real-time stock from Genesis POS.</p>
-    </div>
-    <div class="ecom-card">
-      <span class="icon">📱</span>
-      <h4>Android & iOS App</h4>
-      <p>"Shakti Sports" in Google Play and App Store. Push notifications for offers.</p>
-    </div>
-    <div class="ecom-card">
-      <span class="icon">💳</span>
-      <h4>All Payment Modes</h4>
-      <p>UPI, cards, net banking, COD, EMI for big-ticket items.</p>
-    </div>
-    <div class="ecom-card">
-      <span class="icon">🔄</span>
-      <h4>Live Inventory</h4>
-      <p>Connected to Genesis POS across 4 stores. Real-time stock, no surprises.</p>
-    </div>
-    <div class="ecom-card">
-      <span class="icon">🚚</span>
-      <h4>Delivery + Pickup</h4>
-      <p>Home delivery across Pune. Store pickup with reservation.</p>
-    </div>
-    <div class="ecom-card">
-      <span class="icon">⭐</span>
-      <h4>Loyalty & Reviews</h4>
-      <p>Points for repeat buyers. Product reviews. Build digital trust on your own platform.</p>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 11: WHY US -->
-<section>
-  <p class="label">Why Jarvis Daily</p>
-  <h2>Built for You, <span class="accent">Not by You</span></h2>
-  <p class="subtitle">We build, train, and manage everything. You focus on running your stores.</p>
-  <div class="why-grid">
-    <div class="why-card">
-      <div class="why-icon">📍</div>
-      <div><h4>Pune-Local Team</h4><p>We visit your stores. We understand Pimple Saudagar and your customers. Not a remote agency.</p></div>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">🧠</div>
-      <div><h4>AI-First Approach</h4><p>Not template websites. Custom AI trained on YOUR 50,000 products, pricing, and store policies.</p></div>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">🔐</div>
-      <div><h4>Your Data Stays Yours</h4><p>No vendor lock-in. Export your data anytime. Full ownership of everything we build.</p></div>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">🏏</div>
-      <div><h4>40 Years Preserved in AI</h4><p>Your decades of sports knowledge encoded into the AI. The bot answers like your best salesperson.</p></div>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">📊</div>
-      <div><h4>Full Transparency</h4><p>Real-time dashboard shows every conversation, order, and rupee. 24/7 visibility.</p></div>
-    </div>
-    <div class="why-card">
-      <div class="why-icon">🚀</div>
-      <div><h4>Start Small, Scale Fast</h4><p>Begin with security fix. See results. Then add pillars one at a time. No commitment until you see value.</p></div>
-    </div>
-  </div>
-</section>
-
-<!-- SLIDE 12: CTA -->
-<section data-background="linear-gradient(135deg, #0A0F1C 0%, #1a237e 100%)" class="center">
-  <h2>Ready to Bring Shakti Sports<br>Into the <span class="accent">Digital Age</span>?</h2>
-  <p class="subtitle" style="margin: 0 auto;">Start small - a security fix takes 7 days. See the results before committing to anything else.</p>
-  <a href="https://wa.me/919765071249?text=Hi%2C%20I%20want%20to%20discuss%20the%20digital%20transformation%20plan%20for%20Shakti%20Sports" class="cta-btn">Let's Talk on WhatsApp</a>
-  <a href="mailto:hello@jarvisdaily.com" class="cta-secondary">Or email hello@jarvisdaily.com</a>
-  <p style="margin-top:40px; font-size:0.6em; color:rgba(255,255,255,0.4);">Powered by Jarvis Daily - Tranquil Veda Private Limited</p>
-</section>
-
-</div>
-</div>
-
-<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
-<script>
-Reveal.initialize({
-  hash: true,
-  width: 1280,
-  height: 720,
-  margin: 0.04,
-  transition: 'slide',
-  transitionSpeed: 'default',
-  backgroundTransition: 'fade',
-  controls: true,
-  progress: true,
-  center: false,
-  slideNumber: true,
-});
-</script>
+    // Animated counters
+    Reveal.on('fragmentshown', function(event) {
+      var counters = event.fragment.querySelectorAll('.counter');
+      counters.forEach(function(counter) {
+        var target = parseFloat(counter.getAttribute('data-target'));
+        var duration = 1500;
+        var startTime = null;
+        var isDecimal = target % 1 !== 0;
+        function animate(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var current = target * eased;
+          counter.textContent = isDecimal ? current.toFixed(1) : Math.floor(current);
+          if (progress < 1) requestAnimationFrame(animate);
+          else counter.textContent = isDecimal ? target.toFixed(1) : target;
+        }
+        requestAnimationFrame(animate);
+      });
+    });
+  </script>
 </body>
 </html>
